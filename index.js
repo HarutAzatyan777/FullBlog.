@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv' 
+dotenv.config()
 import express from 'express';
 import multer from 'multer';
 import cors from 'cors'
@@ -14,7 +16,7 @@ import {handleValidationErrors,chekAuth} from './utils/index.js';
 
 import {UserController,PostController} from './controllers/index.js';
 
-
+const {PORT} = process.env
 
 
 mongoose
@@ -71,8 +73,8 @@ app.patch(
 
 
     
-app.listen(4445,(err)=>{
+app.listen(PORT,(err)=>{
     if(err) {
         return console.log(err)}
-        console.log("server ok!");
+        console.log("server listening on port", `${PORT}`);
 })
